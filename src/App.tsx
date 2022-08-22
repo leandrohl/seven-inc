@@ -1,11 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from 'styled-components';
+import Header from './components/Header';
+import Home from './pages/Home';
+import { theme } from './styles/theme';
+import GlobalStyle from './styles/global';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <ThemeProvider theme={theme}>
+      <Header />
+      <Home />
+      <GlobalStyle />
+    </ThemeProvider>
   );
 }
 
