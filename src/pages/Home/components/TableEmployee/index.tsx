@@ -1,5 +1,5 @@
 /* eslint-disable no-sparse-arrays */
-import * as React from 'react';
+import {useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,21 +8,28 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { IEmployee } from '../../types';
-import { Column } from './types';
-import { IconButton, Tooltip } from '@mui/material';
+import { Column, MttTableProps } from './types';
+import { IconButton, Tooltip, Typography } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import DrawerEmployee from '../DrawerEmployee';
+import Modal from '../../../../components/Modal';
+import ModalDetailEmployee from './ModalDetailEmployee';
 
-interface MttTableProps {
-  listEmployee: IEmployee[];
-}
 
 export default function TableEmployee(props: MttTableProps) {
-  const { listEmployee } = props;
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const { listEmployee, editEmployee, removeEmployee } = props;
+
+  const [openDrawerEdit, setOpenDrawerEdit] = useState(false)
+  const [openModalDelete, setOpenModalDelete] = useState(false)
+  const [openModalView, setOpenModalView] = useState(false)
+
+  const [employeeSelected, setEmployeeSelected] = useState<IEmployee>()
+
+  const handleCloseModalDelete = () => setOpenModalDelete(false)
+  const handleCloseModalView = () => setOpenModalView(false)
 
   const columns: readonly Column[] = [
     {id: 'name', label: 'Nome'},
@@ -32,15 +39,6 @@ export default function TableEmployee(props: MttTableProps) {
     {id: 'created_at', label: 'Data de contratação'},
   ]
 
-
-  // const handleChangePage = (event: unknown, newPage: number) => {
-  //   setPage(newPage);
-  // };
-
-  // const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setRowsPerPage(+event.target.value);
-  //   setPage(0);
-  // };
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -63,9 +61,7 @@ export default function TableEmployee(props: MttTableProps) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {listEmployee
-              // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((employee) => {
+            {listEmployee.map((employee) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={employee.id}>
                     {columns.map((column) => {
@@ -78,17 +74,26 @@ export default function TableEmployee(props: MttTableProps) {
                     })} 
                     <TableCell>
                       <Tooltip title="Visualizar" arrow>
-                        <IconButton>
+                        <IconButton onClick={() => {
+                          setEmployeeSelected(employee)
+                          setOpenModalView(true)
+                        }}>
                           <VisibilityIcon />
                         </IconButton>
                       </Tooltip>
                       <Tooltip title="Editar" arrow>
-                        <IconButton>
+                        <IconButton onClick={() => {
+                          setEmployeeSelected(employee)
+                          setOpenDrawerEdit(true)
+                        }}>
                           <CreateIcon />
                         </IconButton>
                       </Tooltip>
                       <Tooltip title="Excluir" arrow>
-                        <IconButton>
+                        <IconButton onClick={() => {
+                          setEmployeeSelected(employee)
+                          setOpenModalDelete(true)
+                        }}>
                           <DeleteIcon />
                         </IconButton>
                       </Tooltip>
@@ -99,15 +104,34 @@ export default function TableEmployee(props: MttTableProps) {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      /> */}
+      <DrawerEmployee 
+        open={openDrawerEdit}
+        onClose={() => setOpenDrawerEdit(false)}
+        employee={employeeSelected}
+        handleSave={editEmployee}
+      />
+      <Modal
+        open={openModalDelete}
+        onClose={handleCloseModalDelete}
+        title='Excluir funcionário'
+        cancelButton={handleCloseModalDelete}
+        confirmButton={() => {
+          if (employeeSelected) {
+            removeEmployee(employeeSelected.id)
+            handleCloseModalDelete()
+          }
+        }}
+      >
+        <Typography variant="body1"> Ao excluir funcionário, não poderá desfazer a ação. </Typography>
+        <Typography variant="subtitle1" style={{ marginTop: '16px'}}>Deseja continuar? </Typography>
+      </Modal>
+      { employeeSelected &&
+        <ModalDetailEmployee
+          open={openModalView}
+          closeModal={handleCloseModalView}
+          employee={employeeSelected}
+        />
+      }
     </Paper>
   );
 }

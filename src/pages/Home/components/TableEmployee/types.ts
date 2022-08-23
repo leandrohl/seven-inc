@@ -1,4 +1,12 @@
+import { IEmployee, Keys } from "../../types";
+
 export interface Column {
-  id: 'id'| 'name'| 'document'| 'email'| 'phone'| 'birth_date'| 'salary' | 'created_at';
+  id: Keys;
   label: string;
+}
+
+export interface MttTableProps {
+  listEmployee: IEmployee[];
+  editEmployee: (employee: IEmployee) => void;
+  removeEmployee: (employeeId: number) => void;
 }

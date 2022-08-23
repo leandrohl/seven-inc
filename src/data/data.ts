@@ -4,8 +4,8 @@ export const data: IEmployee[] = [
   {
     id: 1,
     name: 'João Martins',
-    birth_date: new Date(),
-    created_at: new Date(),
+    birth_date: '',
+    created_at: '',
     document: '456.258.159-55',
     email: 'joao.martins@gmail.com',
     phone: '(18) 99158-5555',
@@ -14,8 +14,8 @@ export const data: IEmployee[] = [
   {
     id: 2,
     name: 'Maria Lima',
-    birth_date: new Date(),
-    created_at: new Date(),
+    birth_date: '',
+    created_at: '',
     document: '456.527.445-55',
     email: 'maria.lima@gmail.com',
     phone: '(18) 99158-5555',
@@ -24,8 +24,8 @@ export const data: IEmployee[] = [
   {
     id: 3,
     name: 'Maria Ferreira',
-    birth_date: new Date(),
-    created_at: new Date(),
+    birth_date: '',
+    created_at: '',
     document: '456.258.159-55',
     email: 'maria.fernanda@gmail.com',
     phone: '(18) 99158-5555',
@@ -34,8 +34,8 @@ export const data: IEmployee[] = [
   {
     id: 4,
     name: 'Leonardo Souza',
-    birth_date: new Date(),
-    created_at: new Date(),
+    birth_date: '',
+    created_at: '',
     document: '456.258.159-55',
     email: 'leonardo.souza@gmail.com',
     phone: '(18) 99158-5555',

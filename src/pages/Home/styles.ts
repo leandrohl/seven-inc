@@ -13,10 +13,18 @@ export const Info = styled(Grid).attrs({
 })`
   padding-bottom: 24px;
   display: flex;
-  justify-content: end; 
+  justify-content: space-between; 
+  align-items: center;
+
+  > h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: ${props => props.theme.color.primary};
+  }
 
   > button {
     background-color: ${props => props.theme.color.primary};
+    color:  ${props => props.theme.color.white};
   }
 
   > button:hover {
