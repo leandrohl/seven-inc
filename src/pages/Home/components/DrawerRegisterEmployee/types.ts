@@ -7,7 +7,8 @@ export interface IDrawerProps {
   handleSave: (employee: IEmployee) => void;
 }
 
-export interface IEmployeeInfo extends Omit<IEmployee, 'id'>{}
+export interface IEmployeeInfo extends Omit<IEmployee, 'id'>{
+}
 
 export class IEmployeeError {
   name: string = ''

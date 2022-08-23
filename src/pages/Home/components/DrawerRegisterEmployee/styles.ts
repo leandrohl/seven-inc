@@ -6,6 +6,17 @@ export const Container = styled(Grid).attrs({
 })`
   padding: 16px 16px;
   width: 340px !important;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    border-radius: 8px;
+    width: 4px;
+    background: ${props => props.theme.color.primary};
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.color.primary};
+    border-radius: 8px;
+  }
 `
 
 export const Header = styled(Grid).attrs({
@@ -28,7 +39,6 @@ export const Form = styled.form`
   flex-direction: column;
   margin-top: 24px;
   width: 100%;
-  overflow-y: auto;
 
   > div {
     margin: 8px 0;
@@ -43,5 +53,6 @@ export const Form = styled.form`
   > button:hover {
     background-color: ${props => props.theme.color.secondary}
   }
+
   
 `

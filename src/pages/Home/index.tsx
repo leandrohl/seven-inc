@@ -1,13 +1,14 @@
 import { Button, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { data } from '../../data/data';
-import DrawerEmployee from './components/DrawerEmployee';
-import TableEmploye from './components/TableEmployee';
+import DrawerEmployee from './components/DrawerRegisterEmployee';
+import TableListEmployee from './components/TableListEmployee';
 
 import * as S from './styles';
 import { IEmployee } from './types';
+import InfoIcon from '@mui/icons-material/Info';
 
-const Home: React.FC = () => {
+function Home() {
   const [listEmployee, setListEmployee] = useState<IEmployee[]>(data)
   const [openDrawerNewEmployee, setOpenDrawerNewEmployee] = useState(false)
 
@@ -32,6 +33,14 @@ const Home: React.FC = () => {
     setListEmployee(listEmployee => listEmployee.filter(employee => employee.id !== employeeId))
   }
 
+  const renderNoResults = () => (
+    <S.ContainerNoResult>
+      <InfoIcon />
+      <Typography variant="h6" style={{ marginBottom: 56, marginTop: 24, textAlign: 'center' }}>
+         Não foi encontrado nenhum resultado.
+      </Typography>
+    </S.ContainerNoResult>
+  )
 
   return (
     <S.Container>
@@ -41,11 +50,15 @@ const Home: React.FC = () => {
           Novo Funcionário
         </Button>
       </S.Info>
-      <TableEmploye 
-        listEmployee={listEmployee} 
-        editEmployee={handleEditEmployee}
-        removeEmployee={handleRemoveEmployee}
-      />
+      {
+        listEmployee.length > 0 ? (
+          <TableListEmployee 
+            listEmployee={listEmployee} 
+            editEmployee={handleEditEmployee}
+            removeEmployee={handleRemoveEmployee}
+          />
+        ) : renderNoResults()
+      }
       <DrawerEmployee
         open={openDrawerNewEmployee}
         onClose={() => setOpenDrawerNewEmployee(false)}

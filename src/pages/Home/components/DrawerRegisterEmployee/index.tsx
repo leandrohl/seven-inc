@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, Drawer, IconButton, TextField, Tooltip, Typography } from '@mui/material';
+import { Button, Drawer, IconButton, InputAdornment, TextField, Tooltip, Typography } from '@mui/material';
 import * as S from './styles'
 import CloseIcon from '@mui/icons-material/Close';
 import { useFormik } from 'formik';
@@ -7,7 +7,7 @@ import Validator from '../../../../utils/validator';
 import { IEmployeeError, IEmployeeInfo, IDrawerProps } from './types';
 import { useEffect } from 'react';
 
-export default function DrawerEmployee(props: IDrawerProps) {
+export default function DrawerRegisterEmployee(props: IDrawerProps) {
   const { onClose, open, employee, handleSave} = props
 
 
@@ -158,7 +158,7 @@ export default function DrawerEmployee(props: IDrawerProps) {
             label="Data de nascimento"
             variant="outlined"
             onChange={formik.handleChange}
-            value={formik.values.birth_date.toString()}
+            value={formik.values.birth_date}
             type='date'
             error={!!formik.errors.birth_date && formik.touched.birth_date}
             helperText={formik.touched.birth_date && formik.errors.birth_date}
@@ -172,6 +172,9 @@ export default function DrawerEmployee(props: IDrawerProps) {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.salary}
+            InputProps={{
+              startAdornment: <InputAdornment position="start">R$</InputAdornment>,
+            }}
             error={!!formik.errors.salary && formik.touched.salary}
             helperText={formik.touched.salary && formik.errors.salary}
             size='small'

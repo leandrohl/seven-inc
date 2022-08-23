@@ -31,3 +31,17 @@ export const Info = styled(Grid).attrs({
     background-color: ${props => props.theme.color.secondary}
   }
 `
+
+export const ContainerNoResult = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+
+  > svg {
+    font-size: 32px;
+    color: ${props => props.theme.color.primary};
+  }
+`

@@ -14,12 +14,12 @@ import { IconButton, Tooltip, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import DrawerEmployee from '../DrawerEmployee';
+import DrawerEmployee from '../DrawerRegisterEmployee';
 import Modal from '../../../../components/Modal';
 import ModalDetailEmployee from './ModalDetailEmployee';
 
 
-export default function TableEmployee(props: MttTableProps) {
+export default function TableListEmployee(props: MttTableProps) {
   const { listEmployee, editEmployee, removeEmployee } = props;
 
   const [openDrawerEdit, setOpenDrawerEdit] = useState(false)
@@ -121,6 +121,7 @@ export default function TableEmployee(props: MttTableProps) {
             handleCloseModalDelete()
           }
         }}
+        confirmButtonText='Confirmar'
       >
         <Typography variant="body1"> Ao excluir funcionário, não poderá desfazer a ação. </Typography>
         <Typography variant="subtitle1" style={{ marginTop: '16px'}}>Deseja continuar? </Typography>

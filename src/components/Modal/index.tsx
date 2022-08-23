@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { 
   Button,
   Dialog,
@@ -10,22 +9,7 @@ import {
   useTheme 
 } from '@mui/material'
 import React from 'react'
-
-interface IModalProps {
-  onClose: () => void;
-  open: boolean;
-  title: string;
-  children: React.ReactNode;
-
-  confirmButton?: () => void;
-  confirmButtonText?: string;
-  cancelButton?: () => void;
-  cancelButtonText?: string;
-  confirmButtonDisabled?: boolean;
-
-  noButtons?: boolean;
-  confirmLoading?: boolean;
-}
+import IModalProps from './types';
 
 
 const Modal: React.FC<IModalProps> = (props: IModalProps) => {
