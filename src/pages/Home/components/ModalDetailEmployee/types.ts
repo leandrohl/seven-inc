@@ -1,4 +1,4 @@
-import { IEmployee, Keys } from "../../../types";
+import { IEmployee, Keys } from "../../types";
 
 export interface IModalDetailEmployeeProps {
   open: boolean;

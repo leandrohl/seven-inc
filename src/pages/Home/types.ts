@@ -5,7 +5,7 @@ export interface IEmployee {
   email: string;
   phone: string;
   birth_date: string;
-  salary: number;
+  salary: string;
   created_at: string;
 }
 

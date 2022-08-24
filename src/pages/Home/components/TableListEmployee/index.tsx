@@ -16,7 +16,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DrawerEmployee from '../DrawerRegisterEmployee';
 import Modal from '../../../../components/Modal';
-import ModalDetailEmployee from './ModalDetailEmployee';
+import ModalDetailEmployee from '../ModalDetailEmployee';
 import Mask from '../../../../utils/masks';
 
 
@@ -37,11 +37,9 @@ export default function TableListEmployee(props: MttTableProps) {
     {id: 'name', label: 'Nome'},
     {id: 'email', label: 'E-mail'},
     {id: 'phone', label: 'Telefone'},
-    {id: 'salary', label: 'Salário'},
+    {id: 'salary', label: 'Salário', format: (label) => Mask.money(Number(label))},
     {id: 'created_at', label: 'Data de contratação', format: (label) => Mask.date(label.toString())},
   ]
-
-  console.log(listEmployee)
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>

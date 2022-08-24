@@ -26,4 +26,13 @@ export default class Mask {
     return format(parseISO(value), 'dd/MM/yyyy')
   }
 
+  public static onlyDigits (input?: string) {
+    if (!input) return ''
+    return input.replace(/\D/g, '')
+  }
+
+  public static money (value?: number) {
+    if (!value) return '-'
+    return value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+  }
 }

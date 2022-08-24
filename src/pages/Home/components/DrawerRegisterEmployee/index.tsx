@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, Drawer, IconButton, TextField, Tooltip, Typography } from '@mui/material';
+import { Button, Drawer, IconButton, InputAdornment, TextField, Tooltip, Typography } from '@mui/material';
 import * as S from './styles'
 import CloseIcon from '@mui/icons-material/Close';
 import { useFormik } from 'formik';
@@ -74,7 +74,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
       email: '',
       phone: '',
       birth_date: '',
-      salary: 0,
+      salary: '',
       created_at: '',
     },
     validate,
@@ -179,6 +179,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             error={!!formik.errors.salary && formik.touched.salary}
             helperText={formik.touched.salary && formik.errors.salary}
             size='small'
+            InputProps={{ startAdornment: <InputAdornment position="start">R$</InputAdornment> }}
           />
           <TextField
             id="created_at"

@@ -9,7 +9,7 @@ export const data: IEmployee[] = [
     document: '532.488.380-86',
     email: 'joao.martins@gmail.com',
     phone: '(18) 99158-5555',
-    salary: 5000
+    salary: '5000'
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const data: IEmployee[] = [
     document: '085.925.140-37',
     email: 'maria.lima@gmail.com',
     phone: '(18) 99158-5555',
-    salary: 7000
+    salary: '7000'
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ export const data: IEmployee[] = [
     document: '802.554.730-28',
     email: 'maria.fernanda@gmail.com',
     phone: '(18) 99158-5555',
-    salary: 6000
+    salary: '6000'
   },
   {
     id: 4,
@@ -39,6 +39,6 @@ export const data: IEmployee[] = [
     document: '921.360.220-08',
     email: 'leonardo.souza@gmail.com',
     phone: '(18) 99158-5555',
-    salary: 4000
+    salary: '4000'
   },
 ]

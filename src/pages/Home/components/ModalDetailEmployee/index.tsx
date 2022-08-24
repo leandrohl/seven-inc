@@ -1,10 +1,10 @@
 import { Typography } from '@mui/material'
 import React from 'react'
-import Modal from '../../../../../components/Modal'
+import Modal from '../../../../components/Modal'
 
 import * as S from './styles'
 import { IModalDetailEmployeeProps, IInfoEmployee } from './types';
-import Mask from '../../../../../utils/masks';
+import Mask from '../../../../utils/masks';
 
 const ModalDetailEmployee: React.FC<IModalDetailEmployeeProps> = (props: IModalDetailEmployeeProps) => {
   const { open, closeModal, employee } = props
@@ -19,8 +19,8 @@ const ModalDetailEmployee: React.FC<IModalDetailEmployeeProps> = (props: IModalD
     { id: 'document', label: 'CPF', format: (label) => validateIfNull(label.toString())},
     { id: 'email', label: 'E-mail', format: (label) => validateIfNull(label.toString())},
     { id: 'phone', label: 'Telefone', format: (label) => validateIfNull(label.toString())},
-    { id: 'birth_date', label: 'Data de nascimento', format: (label) => Mask.date(label.toString()) },
-    { id: 'salary', label: 'Salário', format: (label) => label.toString()},
+    { id: 'birth_date', label: 'Data de nascimento', format: (label) => Mask.date(label.toString())},
+    { id: 'salary', label: 'Salário', format: (label) => Mask.money(Number(label))},
     { id: 'created_at', label: 'Data de contratação', format: (label) => Mask.date(label.toString())},
   ]
 
