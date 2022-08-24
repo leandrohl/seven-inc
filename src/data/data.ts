@@ -6,7 +6,7 @@ export const data: IEmployee[] = [
     name: 'João Martins',
     birth_date: '',
     created_at: '',
-    document: '456.258.159-55',
+    document: '532.488.380-86',
     email: 'joao.martins@gmail.com',
     phone: '(18) 99158-5555',
     salary: 5000
@@ -16,7 +16,7 @@ export const data: IEmployee[] = [
     name: 'Maria Lima',
     birth_date: '',
     created_at: '',
-    document: '456.527.445-55',
+    document: '085.925.140-37',
     email: 'maria.lima@gmail.com',
     phone: '(18) 99158-5555',
     salary: 7000
@@ -26,7 +26,7 @@ export const data: IEmployee[] = [
     name: 'Maria Ferreira',
     birth_date: '',
     created_at: '',
-    document: '456.258.159-55',
+    document: '802.554.730-28',
     email: 'maria.fernanda@gmail.com',
     phone: '(18) 99158-5555',
     salary: 6000
@@ -36,7 +36,7 @@ export const data: IEmployee[] = [
     name: 'Leonardo Souza',
     birth_date: '',
     created_at: '',
-    document: '456.258.159-55',
+    document: '921.360.220-08',
     email: 'leonardo.souza@gmail.com',
     phone: '(18) 99158-5555',
     salary: 4000

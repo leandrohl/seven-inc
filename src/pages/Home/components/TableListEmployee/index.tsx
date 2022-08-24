@@ -17,6 +17,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import DrawerEmployee from '../DrawerRegisterEmployee';
 import Modal from '../../../../components/Modal';
 import ModalDetailEmployee from './ModalDetailEmployee';
+import Mask from '../../../../utils/masks';
 
 
 export default function TableListEmployee(props: MttTableProps) {
@@ -31,14 +32,16 @@ export default function TableListEmployee(props: MttTableProps) {
   const handleCloseModalDelete = () => setOpenModalDelete(false)
   const handleCloseModalView = () => setOpenModalView(false)
 
+
   const columns: readonly Column[] = [
     {id: 'name', label: 'Nome'},
     {id: 'email', label: 'E-mail'},
     {id: 'phone', label: 'Telefone'},
     {id: 'salary', label: 'Salário'},
-    {id: 'created_at', label: 'Data de contratação'},
+    {id: 'created_at', label: 'Data de contratação', format: (label) => Mask.date(label.toString())},
   ]
 
+  console.log(listEmployee)
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -49,8 +52,6 @@ export default function TableListEmployee(props: MttTableProps) {
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
-                  // align={column.align}
-                  // style={{ minWidth: column.minWidth }}
                 >
                   {column.label}
                 </TableCell>
@@ -68,7 +69,7 @@ export default function TableListEmployee(props: MttTableProps) {
                       const value = employee[column.id];
                       return (
                         <TableCell key={column.id}>
-                          {String(value)}
+                          {column.format ? column.format(value) : value}
                         </TableCell>
                       );
                     })} 

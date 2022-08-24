@@ -1,15 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, Drawer, IconButton, InputAdornment, TextField, Tooltip, Typography } from '@mui/material';
+import { Button, Drawer, IconButton, TextField, Tooltip, Typography } from '@mui/material';
 import * as S from './styles'
 import CloseIcon from '@mui/icons-material/Close';
 import { useFormik } from 'formik';
 import Validator from '../../../../utils/validator';
 import { IEmployeeError, IEmployeeInfo, IDrawerProps } from './types';
 import { useEffect } from 'react';
+import Mask from '../../../../utils/masks';
+import { format } from 'date-fns';
 
 export default function DrawerRegisterEmployee(props: IDrawerProps) {
   const { onClose, open, employee, handleSave} = props
-
 
   useEffect(() => {
     if (employee && open) {
@@ -125,10 +126,11 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             label="CPF"
             variant="outlined"
             onChange={formik.handleChange}
-            value={formik.values.document}
+            value={Mask.cpf(formik.values.document)}
             error={!!formik.errors.document && formik.touched.document}
             helperText={formik.touched.document && formik.errors.document}
             size='small'
+            inputProps={{ maxLength: 14 }}
           />
           <TextField
             id="email"
@@ -163,6 +165,8 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             error={!!formik.errors.birth_date && formik.touched.birth_date}
             helperText={formik.touched.birth_date && formik.errors.birth_date}
             size='small'
+            InputLabelProps={{ shrink: true }}
+            inputProps={{ max: format(new Date(), 'yyyy-MM-dd') }}
           />
           <TextField
             id="salary"
@@ -172,9 +176,6 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.salary}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">R$</InputAdornment>,
-            }}
             error={!!formik.errors.salary && formik.touched.salary}
             helperText={formik.touched.salary && formik.errors.salary}
             size='small'
@@ -182,7 +183,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
           <TextField
             id="created_at"
             name="created_at"
-            label="Data de criação"
+            label="Data de contratação"
             variant="outlined"
             type='date'
             onChange={formik.handleChange}
@@ -190,6 +191,8 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             error={!!formik.errors.created_at && formik.touched.created_at}
             helperText={formik.touched.created_at && formik.errors.created_at}
             size='small'
+            InputLabelProps={{ shrink: true }}
+            inputProps={{ max: format(new Date(), 'yyyy-MM-dd') }}
           />
           <Button type="submit"> Enviar </Button>
         </S.Form>
