@@ -5,7 +5,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useFormik } from 'formik';
 import Validator from '../../../../utils/validator';
 import { IEmployeeError, IEmployeeInfo, IDrawerProps } from './types';
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 import Mask from '../../../../utils/masks';
 import { format } from 'date-fns';
 
@@ -32,35 +32,35 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
     const errors: IEmployeeError = new IEmployeeError()
 
     if (!values.name) {
-      errors.name = 'Campo deve ser preenchido';
+      errors.name = 'O campo deve ser preenchido';
     }
 
     if (!values.document) {
-      errors.document = 'Campo deve ser preenchido';
+      errors.document = 'O campo deve ser preenchido';
     } else if (!Validator.cpf(values.document)) {
-      errors.document = 'CPF inválido';
+      errors.document = 'O CPF digitado é inválido';
     }
 
     if (!values.email) {
-      errors.email = 'Campo deve ser preenchido';
+      errors.email = 'O campo deve ser preenchido';
     } else if (!Validator.email(values.email)) {
-      errors.email = 'E-mail inválido';
+      errors.email = 'O e-mail digitado é inválido';
     }
 
     if (!values.phone) {
-      errors.phone = 'Campo deve ser preenchido';
+      errors.phone = 'O campo deve ser preenchido';
     }
 
     if (!values.birth_date) {
-      errors.birth_date = 'Campo deve ser preenchido';
+      errors.birth_date = 'O campo deve ser preenchido';
     }
 
     if (!values.salary) {
-      errors.salary = 'Campo deve ser preenchido';
+      errors.salary = 'O campo deve ser preenchido';
     }
 
     if (!values.created_at) {
-      errors.created_at = 'Campo deve ser preenchido';
+      errors.created_at = 'O campo deve ser preenchido';
     }
 
     if (!verifyObjectEmpty(errors)) return errors
@@ -88,6 +88,16 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
     }
   })
 
+  const onChange = (event: ChangeEvent<HTMLInputElement>, mask?: (value: string) => string) => {
+    if (mask) {
+      const newEvent = event
+      newEvent.target.value = mask(event.target.value)
+      formik.handleChange(newEvent)
+    } else {
+      formik.handleChange(event)
+    }
+  }
+
   const handleClose = () => {
     formik.resetForm()
     onClose()
@@ -114,7 +124,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             name="name"
             label="Nome"
             variant="outlined"
-            onChange={formik.handleChange}
+            onChange={onChange}
             value={formik.values.name}
             error={!!formik.errors.name && formik.touched.name}
             helperText={formik.touched.name && formik.errors.name}
@@ -125,8 +135,8 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             name="document"
             label="CPF"
             variant="outlined"
-            onChange={formik.handleChange}
-            value={Mask.cpf(formik.values.document)}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event, Mask.cpf)}
+            value={formik.values.document}
             error={!!formik.errors.document && formik.touched.document}
             helperText={formik.touched.document && formik.errors.document}
             size='small'
@@ -137,7 +147,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             name="email"
             label="E-mail"
             variant="outlined"
-            onChange={formik.handleChange}
+            onChange={onChange}
             value={formik.values.email}
             error={!!formik.errors.email && formik.touched.email}
             helperText={formik.touched.email && formik.errors.email}
@@ -148,7 +158,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             name="phone"
             label="Telefone"
             variant="outlined"
-            onChange={formik.handleChange}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event, Mask.phone)}
             value={formik.values.phone}
             error={!!formik.errors.phone && formik.touched.phone}
             helperText={formik.touched.phone && formik.errors.phone}
@@ -159,7 +169,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             name="birth_date"
             label="Data de nascimento"
             variant="outlined"
-            onChange={formik.handleChange}
+            onChange={onChange}
             value={formik.values.birth_date}
             type='date'
             error={!!formik.errors.birth_date && formik.touched.birth_date}
@@ -173,13 +183,11 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             name="salary"
             label="Salário"
             variant="outlined"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event)}
             value={formik.values.salary}
             error={!!formik.errors.salary && formik.touched.salary}
             helperText={formik.touched.salary && formik.errors.salary}
             size='small'
-            InputProps={{ startAdornment: <InputAdornment position="start">R$</InputAdornment> }}
           />
           <TextField
             id="created_at"
@@ -187,7 +195,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             label="Data de contratação"
             variant="outlined"
             type='date'
-            onChange={formik.handleChange}
+            onChange={onChange}
             value={formik.values.created_at.toString()}
             error={!!formik.errors.created_at && formik.touched.created_at}
             helperText={formik.touched.created_at && formik.errors.created_at}

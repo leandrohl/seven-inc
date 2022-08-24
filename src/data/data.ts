@@ -8,8 +8,8 @@ export const data: IEmployee[] = [
     created_at: '',
     document: '532.488.380-86',
     email: 'joao.martins@gmail.com',
-    phone: '(18) 99158-5555',
-    salary: '5000'
+    phone: '(18) 3271-2525',
+    salary: 'R$ 5000,00'
   },
   {
     id: 2,
@@ -18,8 +18,8 @@ export const data: IEmployee[] = [
     created_at: '',
     document: '085.925.140-37',
     email: 'maria.lima@gmail.com',
-    phone: '(18) 99158-5555',
-    salary: '7000'
+    phone: '(18) 3271-2525',
+    salary: 'R$ 7000,00'
   },
   {
     id: 3,
@@ -28,8 +28,8 @@ export const data: IEmployee[] = [
     created_at: '',
     document: '802.554.730-28',
     email: 'maria.fernanda@gmail.com',
-    phone: '(18) 99158-5555',
-    salary: '6000'
+    phone: '(18) 3271-2525',
+    salary: 'R$ 6000,00'
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ export const data: IEmployee[] = [
     created_at: '',
     document: '921.360.220-08',
     email: 'leonardo.souza@gmail.com',
-    phone: '(18) 99158-5555',
-    salary: '4000'
+    phone: '(18) 3271-2525',
+    salary: 'R$ 4000,00'
   },
 ]

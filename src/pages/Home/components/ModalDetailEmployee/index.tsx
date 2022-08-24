@@ -14,14 +14,14 @@ const ModalDetailEmployee: React.FC<IModalDetailEmployeeProps> = (props: IModalD
   }
 
   const infoEmployee: IInfoEmployee[] = [
-    { id: 'id', label: 'ID', format: (label) => validateIfNull(label.toString())},
-    { id: 'name', label: 'Nome', format: (label) => validateIfNull(label.toString())},
-    { id: 'document', label: 'CPF', format: (label) => validateIfNull(label.toString())},
-    { id: 'email', label: 'E-mail', format: (label) => validateIfNull(label.toString())},
-    { id: 'phone', label: 'Telefone', format: (label) => validateIfNull(label.toString())},
-    { id: 'birth_date', label: 'Data de nascimento', format: (label) => Mask.date(label.toString())},
-    { id: 'salary', label: 'Salário', format: (label) => Mask.money(Number(label))},
-    { id: 'created_at', label: 'Data de contratação', format: (label) => Mask.date(label.toString())},
+    { id: 'id', label: 'ID', format: (value) => validateIfNull(value.toString())},
+    { id: 'name', label: 'Nome', format: (value) => validateIfNull(value.toString())},
+    { id: 'document', label: 'CPF', format: (value) => validateIfNull(value.toString())},
+    { id: 'email', label: 'E-mail', format: (value) => validateIfNull(value.toString())},
+    { id: 'phone', label: 'Telefone', format: (value) => validateIfNull(value.toString())},
+    { id: 'birth_date', label: 'Data de nascimento', format: (value) => Mask.date(value.toString())},
+    { id: 'salary', label: 'Salário', format: (value) => validateIfNull(value.toString())},
+    { id: 'created_at', label: 'Data de contratação', format: (value) => Mask.date(value.toString())},
   ]
 
   return (

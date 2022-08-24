@@ -9,5 +9,5 @@ export interface IModalDetailEmployeeProps {
 export interface IInfoEmployee {
   id: Keys,
   label: string,
-  format: (label: string | number) => string
+  format: (value: string | number) => string
 }

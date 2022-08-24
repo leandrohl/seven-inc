@@ -37,7 +37,7 @@ export default function TableListEmployee(props: MttTableProps) {
     {id: 'name', label: 'Nome'},
     {id: 'email', label: 'E-mail'},
     {id: 'phone', label: 'Telefone'},
-    {id: 'salary', label: 'Salário', format: (label) => Mask.money(Number(label))},
+    {id: 'salary', label: 'Salário'},
     {id: 'created_at', label: 'Data de contratação', format: (label) => Mask.date(label.toString())},
   ]
 
