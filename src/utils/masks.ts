@@ -22,50 +22,18 @@ export default class Mask {
     return format(parseISO(value), 'dd/MM/yyyy')
   }
 
-  public static onlyDigits (input?: string) {
-    if (!input) return ''
-    return input.replace(/\D/g, '')
-  }
-
-  private static formatValue (value: string) {
-    if (value.length >= 2 && value[0] === '0') {
-      value = value.slice(1, value.length)
-    }
-
-    if (value.length > 2) {
-      let reg = '(\\d{2})'
-      let groups = ''
-      const qtd = Math.ceil((value.length - 2) / 3)
-      for (let i = 0; i < qtd; i++) {
-        groups += `$${i + 1}`
-        if (i < qtd - 1) {
-          reg = '(\\d{3})' + reg
-          groups += '.'
-        } else {
-          reg = '(\\d{1,3})' + reg
-        }
-      }
-      groups += `,$${qtd + 1}`
-      const regExp = new RegExp(reg, 'g')
-      value = value.replace(regExp, groups)
-    }
-    return value
-  }
-
   public static money (value?: string) {
     try {
       if (typeof value !== 'string' || !value) throw ''
 
-      value = this.onlyDigits(value).replace('R$ ', '')
-      value = this.formatValue(value)
-
+      value = value.replace('R$ ', '')
       return `R$ ${value}`
     } catch (error) {
       return ''
     }
   }
 
-  public static phone (value?: string) {
+  public static phone (value?: string) { 
     try {
       if (typeof value !== 'string' || !value) throw ''
 
@@ -76,4 +44,5 @@ export default class Mask {
       return ''
     }
   }
+
 }

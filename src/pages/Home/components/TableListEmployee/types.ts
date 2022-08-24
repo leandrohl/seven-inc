@@ -3,7 +3,7 @@ import { IEmployee, Keys } from "../../types";
 export interface Column {
   id: Keys;
   label: string;
-  format?: (label : string | number) => string
+  format?: (label : string | number) => string;
 }
 
 export interface MttTableProps {

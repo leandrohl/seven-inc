@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, Drawer, IconButton, InputAdornment, TextField, Tooltip, Typography } from '@mui/material';
+import { Button, Drawer, IconButton, TextField, Tooltip, Typography } from '@mui/material';
 import * as S from './styles'
 import CloseIcon from '@mui/icons-material/Close';
 import { useFormik } from 'formik';
@@ -183,7 +183,7 @@ export default function DrawerRegisterEmployee(props: IDrawerProps) {
             name="salary"
             label="Salário"
             variant="outlined"
-            onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event)}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event, Mask.money)}
             value={formik.values.salary}
             error={!!formik.errors.salary && formik.touched.salary}
             helperText={formik.touched.salary && formik.errors.salary}
