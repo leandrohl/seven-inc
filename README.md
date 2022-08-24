@@ -1,7 +1,7 @@
 # SEVEN INC
 
 <p> 
-  O SEVEN INC foi construído para administrar funcionários de uma empresa.
+ Este sistema foi construído para administrar funcionários de uma empresa.
 </p>
 
 ### Funcionalidades:
