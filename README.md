@@ -1,10 +1,10 @@
 # SEVEN INC
 
 <p> 
-O SVN é um ERP (sistema de gestão) que está sendo construído para administrar funcionários da empresa.
-.</p>
+  O SEVEN INC foi construído para administrar funcionários de uma empresa.
+</p>
 
-## FUNCIONALIDADES:
+### Funcionalidades:
 
 <ul>
   <li> Listagem de funcionários, contendo nome, e-mail, telefone, salário e data da contratação;  </li>
@@ -12,9 +12,9 @@ O SVN é um ERP (sistema de gestão) que está sendo construído para administra
   <li> Formulário para a criação de um novo funcionário; </li>
   <li> Formulário para a edição dos dados de um funcionário;  </li>
   <li> Remoção de um funcionário.  </li>
-<ul>
+</ul>
 
-## INSTRUÇÕES PARA RODAR LOCALMENTE:
+### Instruções para rodar localmente:
 
 Baixe todas as dependências utilizadas antes da execução da aplicação
 <br />
